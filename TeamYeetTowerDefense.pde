@@ -1,6 +1,6 @@
 boolean debug = false;
 Level level;
-Player player;
+Enemy enemy;
 Pathfinder pathfinder;
 Tile tile;
 boolean isExisting; 
@@ -9,19 +9,19 @@ void setup() {
   size(926, 428);
   TileHelper.app = this;
   level = new Level();
-  player = new Player();
+  enemy = new Enemy();
   pathfinder = new Pathfinder();
   tile = new Tile();
   testIcon = new TowerIcon(40,height - 40,50,50);
 }
 void draw() {
   // UPDATE:
-  player.update();
+  enemy.update();
 
   // DRAW:
   background(TileHelper.isHex ? 0 : 127);
   level.draw();
-  player.draw();
+  enemy.draw();
 
   // TODO: using mouse position, get tile. set it's hover property to true
   if (MouseInTiles()) {
@@ -67,7 +67,7 @@ void mousePressed() {
   // TODO: set the player's target position to the clicked tile
   if (mouseX <= width && mouseY >= height - 200) { //UI area
   } else {
-    player.setTargetPosition(TileHelper.pixelToGrid(new PVector(mouseX, mouseY))); //works only 
+    //enemy.setTargetPosition(TileHelper.pixelToGrid(new PVector(mouseX, mouseY))); //works only 
   }
 }
 void keyPressed() {
